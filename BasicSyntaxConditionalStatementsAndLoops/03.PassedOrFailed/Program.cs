@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _3._Passed_or_Failed
+namespace P03.PassedOrFailed
 {
     class Program
     {
