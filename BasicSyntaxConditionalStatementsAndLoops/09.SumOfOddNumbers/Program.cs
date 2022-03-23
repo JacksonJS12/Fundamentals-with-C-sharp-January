@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _9._Sum_of_Odd_Numbers
+namespace P09.SumOfOddNumbers
 {
     class Program
     {
