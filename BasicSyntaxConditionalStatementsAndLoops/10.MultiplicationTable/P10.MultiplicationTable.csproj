@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>_10._Multiplication_Table</RootNamespace>
+    <RootNamespace>P10.MultiplicationTable</RootNamespace>
   </PropertyGroup>
 
 </Project>
