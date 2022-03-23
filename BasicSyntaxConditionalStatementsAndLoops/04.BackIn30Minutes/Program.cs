@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _4._Back_in_30_Minutes
+namespace P04.BackIn30Minutes
 {
     class Program
     {
