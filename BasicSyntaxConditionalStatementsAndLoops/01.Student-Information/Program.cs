@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _1._Student_Information
+namespace 01.StudentInformation
 {
     class Program
     {
