@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>_13._Holidays_Between_Two_Dates</RootNamespace>
+    <RootNamespace>P13.HolidaysBetweenTwoDates</RootNamespace>
   </PropertyGroup>
 
 </Project>
