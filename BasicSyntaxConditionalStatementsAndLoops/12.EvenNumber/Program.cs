@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _12._Even_Number
+namespace P12.EvenNumber
 {
     class Program
     {
