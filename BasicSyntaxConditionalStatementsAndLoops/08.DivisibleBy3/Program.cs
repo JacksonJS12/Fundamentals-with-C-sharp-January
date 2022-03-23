@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _8._Divisible_by_3
+namespace P08.DivisibleBy3
 {
     class Program
     {
