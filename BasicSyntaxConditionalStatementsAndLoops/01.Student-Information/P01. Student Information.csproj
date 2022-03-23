@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>_1._Student_Information</RootNamespace>
+    <RootNamespace>P01.StudentInformation</RootNamespace>
   </PropertyGroup>
 
 </Project>
