@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _6._Foreign_Languages
+namespace P06.ForeignLanguages
 {
     class Program
     {
