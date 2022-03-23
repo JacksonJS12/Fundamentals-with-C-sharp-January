@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _7._Theatre_Promotions
+namespace P07.TheatrePromotions
 {
     class Program
     {
