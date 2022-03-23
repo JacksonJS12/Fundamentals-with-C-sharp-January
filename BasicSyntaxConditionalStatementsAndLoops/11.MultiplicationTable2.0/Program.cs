@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _11._Multiplication_Table_2._0
+namespace P11.MultiplicationTable2.0
 {
     class Program
     {
