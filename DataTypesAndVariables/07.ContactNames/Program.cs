@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace _07._Concat_Names
+namespace _07._Contact_Names
 {
     internal class Program
     {
