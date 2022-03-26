@@ -6,15 +6,15 @@ namespace _03._Exact_Sum_of_Real_Numbers
     {
         static void Main(string[] args)
         {
-            decimal num = decimal.Parse(Console.ReadLine());
-            decimal sum = 0m;
+            byte centuries = byte.Parse(Console.ReadLine());
+            int years = centuries * 100;
+            int days = (int)(years * 365.2422);
+            int hours = days * 24;
+            int minutes = hours * 60;
 
-            for (int i = 1; i <= num; i++)
-            {
-                sum += decimal.Parse(Console.ReadLine());
-            }
-            Console.WriteLine($"{sum}");
-            
+            Console.WriteLine("{0} centuries = {1} years = {2} days = {3} hours = {4} minutes", centuries, years, days, hours, minutes);
+
+
         }
     }
 }
