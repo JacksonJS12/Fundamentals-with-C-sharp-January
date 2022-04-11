@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MidExamRetake
+namespace P01.GoogleSearches
 {
     internal class Program
     {
