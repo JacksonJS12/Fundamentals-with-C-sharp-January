@@ -6,18 +6,10 @@ namespace P09.SumOfOddNumbers
     {
         static void Main(string[] args)
         {
-            var num = int.Parse(Console.ReadLine());
-            var sum = 0;
-
-            for (int i = 0; i < num; i++)
+            for (int i = 3; i <= 99; i += 3)
             {
-                var currentOddNum = 1 + (i * 2);
-                sum += currentOddNum;
-
-                Console.WriteLine(currentOddNum);
+                Console.WriteLine($"{i}");
             }
-
-            Console.WriteLine($"Sum: {sum}");
         }
     }
 }
