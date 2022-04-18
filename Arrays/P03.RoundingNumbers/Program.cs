@@ -6,17 +6,18 @@ namespace _03._Rounding_Numbers
     {
         static void Main(string[] args)
         {
-            string[] rawInput = Console.ReadLine().Split();
-            double[] items = new double[rawInput.Length];
+           double[] array = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .Select(double.Parse)
+                .ToArray();
 
-            for (int i = 0; i < rawInput.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                items[i] = double.Parse(rawInput[i]);
-            }
+                double oldSum = array[i];
 
-            for (int i = 0; i < items.Length; i++)
-            {
-                Console.WriteLine($"{items[i]} => {Math.Round(items[i], MidpointRounding.AwayFromZero)}");
+                double newSum = Math.Round(oldSum, MidpointRounding.AwayFromZero);
+                Console.WriteLine($"{Convert.ToDecimal(oldSum)} => {Convert.ToDecimal(newSum)}");
+
             }
         }
     }
