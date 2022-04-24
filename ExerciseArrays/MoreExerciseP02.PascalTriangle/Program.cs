@@ -23,20 +23,10 @@ namespace MoreExerciseP02.PascalTriangle
                     {
                         if (lastRow.Length > 1)
                         {
-                            if (i % 2 == 0 && !(i == currRow.Length - 1))
-                            {
-                                if (!(lastRow.Length < i + 2))
-                                {
-                                    currRow[i] = lastRow[i] + lastRow[i + 1];
-                                }
-                                else
-                                {
-                                    currRow[i] = lastRow[i] + lastRow[lastRow.Length - 2];
-                                }
-                            }
-                            else if (i % 2 != 0 && !(i == currRow.Length - 1))
+                            if (!(i == lastRow.Length))
                             {
                                 currRow[i] = lastRow[i] + lastRow[i - 1];
+
                             }
                             else
                             {
@@ -52,11 +42,8 @@ namespace MoreExerciseP02.PascalTriangle
                     {
                         currRow[i] = 1;
                     }
+
                 }
-
-
-
-
 
                 Console.WriteLine(string.Join(" ", currRow));
             }
