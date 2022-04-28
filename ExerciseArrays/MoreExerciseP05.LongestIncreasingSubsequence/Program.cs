@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.Linq;
 
 namespace MoreExerciseP05.LongestIncreasingSubsequence
 {
@@ -6,7 +7,17 @@ namespace MoreExerciseP05.LongestIncreasingSubsequence
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            int[] numbers = Console.ReadLine()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .ToArray();
+
+            int[] len = Array.Empty<int>();
+            for (int p = 0; p < numbers.Length; p++)
+            {
+
+            }
+
         }
     }
 }
