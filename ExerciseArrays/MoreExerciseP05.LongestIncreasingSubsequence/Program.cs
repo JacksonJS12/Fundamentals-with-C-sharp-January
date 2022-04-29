@@ -7,15 +7,17 @@ namespace MoreExerciseP05.LongestIncreasingSubsequence
     {
         static void Main(string[] args)
         {
-            int[] numbers = Console.ReadLine()
+            int[] lis = Console.ReadLine()
                 .Split(' ', StringSplitOptions.RemoveEmptyEntries)
                 .Select(int.Parse)
                 .ToArray();
 
-            int[] len = Array.Empty<int>();
-            for (int p = 0; p < numbers.Length; p++)
+            int length = lis.Length;
+            int numbers = 0;
+            int previos = lis.Length - 1;
+            for (int p = 0; p < lis.Length; p++)
             {
-
+                numbers = lis[p];
             }
 
         }
