@@ -13,73 +13,33 @@ namespace MoreExerciseP04.FoldAndSum
                 .ToArray();
 
 
+            int firstRowLeftIndex = input.Length / 4 - 1;
+            int firstRowRightIndex = 3 * input.Length / 4;
+            
+            int[] firstRow = new int[input.Length / 2];
 
-            int[] firstPart = FirstPart(input);
-            int[] secondPart = SecondPart(input);
-
-            int[] firstRow = FirstRow(input, firstPart, secondPart);
-            int[] secondRow = SecondRow(input, firstPart, secondPart, firstRow);
-
-
-
-
-            int[] result = new int[firstRow.Length];
-            for (int i = 0; i < firstRow.Length; i++)
+            int numbers = 0;
+            for (int i = firstRowLeftIndex; i >= 0; i--)
             {
-                result[i] = firstRow[i] + secondRow[i];
+                numbers++;
+                firstRow[firstRowLeftIndex - i] = input[i];
             }
 
-            Console.WriteLine(string.Join(" ", result));
-        }
-        static int[] FirstPart(int[] input)
-        {
-            int[] firstPart = new int[input.Length / 4];
-            for (int i = 0; i < input.Length / 4; i++)
+            for (int i = input.Length - 1; i >= firstRowRightIndex; i--)
             {
-                firstPart[i] = input[i];
-            }
-            Array.Reverse(firstPart);
-
-            return firstPart;
-        }
-
-        static int[] SecondPart(int[] input)
-        {
-            int[] secondPart = Array.Empty<int>().ToArray();
-            for (int i = input.Length - 1; i > input.Length - 1 - (input.Length / 4); i--)
-            {
-                secondPart = secondPart.Append(input[i]).ToArray();
+                firstRow[input.Length - 1 - i + numbers] = input[i];
             }
 
-            return secondPart;
-        }
-
-        static int[] FirstRow(int[] input, int[] firstPart, int[] secondPart)
-        {
-
-            int[] firstRow = firstPart.Concat(secondPart).ToArray();
-
-
-            return firstRow;
-        }
-
-        static int[] SecondRow(int[] input, int[] firstPart, int[] secondPart, int[] firstRow)
-        {
-            int[] secondRow = Array.Empty<int>();
-
+            int[] secondRow = new int[input.Length / 2];
+            for (int i = firstRowLeftIndex + 1; i < firstRowRightIndex; i++)
+            {
+                secondRow[i - numbers] = input[i];
+            }
 
             for (int i = 0; i < firstRow.Length; i++)
             {
-             bool flag = input.Contains(firstRow[i]);
-                if (flag == true)
-                {
-                    input = input.Where(val => val != firstRow[i]).ToArray();
-                }
-
+                Console.Write($"{firstRow[i] + secondRow[i]} ");
             }
-
-            secondRow = input;
-            return secondRow;
         }
     }
 
