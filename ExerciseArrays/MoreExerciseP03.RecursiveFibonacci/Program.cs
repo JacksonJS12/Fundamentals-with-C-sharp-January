@@ -6,24 +6,20 @@ namespace MoreExerciseP03.RecursiveFibonacci
     {
         static void Main(string[] args)
         {
-            int input = int.Parse(Console.ReadLine());
+            int position = int.Parse(Console.ReadLine());
+            int[] fibonacciSequence = new int[50];
 
-            int[] sequences = new int[input];
-            int lastNum = 0;
-            for (int i = 0; i < input; i++)
+            fibonacciSequence[0] = 1;
+            fibonacciSequence[1] = 1;
+
+            if (position > 2)
             {
-                if (i == 0)
+                for (int i = 2; i < position; i++)
                 {
-                    sequences[0] = 1;
-                    lastNum = 1;
-                    continue;
+                    fibonacciSequence[i] = fibonacciSequence[i - 1] + fibonacciSequence[i - 2];
                 }
-
-                sequences[i] = i + lastNum;
-                lastNum = i;
             }
-
-            Console.WriteLine(string.Join(" ", sequences));
+            Console.WriteLine(fibonacciSequence[position - 1]);
         }
     }
 }
