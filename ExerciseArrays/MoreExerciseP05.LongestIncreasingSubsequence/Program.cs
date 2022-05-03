@@ -1,45 +1,58 @@
-﻿using System;
+using System;
 using System.Linq;
 
 namespace MoreExerciseP05.LongestIncreasingSubsequence
 {
-    internal class Program
+    class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
-            int[] input = Console.ReadLine()
-                .Split(' ', StringSplitOptions.RemoveEmptyEntries)
-                .Select(int.Parse)
+            int[] sequence = Console.ReadLine()
+                .Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(x => int.Parse(x))
                 .ToArray();
 
-            int[] lis = new int[input.Length];
-            int lastNum = 0;
-            int prevNum = 0;
-            for (int i = 0; i < input.Length; i++)
+            int[] lis;
+            int[] len = new int[sequence.Length];
+            int[] prev = new int[sequence.Length];
+            int maxLength = 0;
+            int lastIndex = -1;
+
+            // tour the sequence
+            for (int i = 0; i < sequence.Length; i++)
             {
-                if (i == 0)
-                {
-                    lis[0] = input[0];
-                    lastNum = input[0];
-                    prevNum = input[0];
-                    continue;
-                }
+                // length && previous respectively = 1 && -1
+                len[i] = 1;
+                prev[i] = -1;
 
-                if (lastNum < input[i])
+                //compare the sequence for best length of the sequence 
+                // if i == j -> loop j won't fulfill
+                for (int j = 0; j < i; j++)
                 {
-                    lis[i] = input[i];
-                    lastNum = input[i];
-                    prevNum = input[i - 1];
-                }
-                else if(prevNum < input[i] && lastNum > input[i])
-                {
-                    lis[i-1] = input[i];
-                    lastNum = input[i];
-                    prevNum = input[i - 1];
                     
+                    // current count of elements j >= elements count of i -> elements count /sequence/ will increase
+                    
+                    if (sequence[j] < sequence[i] && len[j] >= len[i])
+                    {
+                        len[i] = 1 + len[j];
+                        prev[i] = j; //save the index of the best element of the sequence
+                    }
                 }
-
+                //save max count of elements
+                if (len[i] > maxLength)
+                {
+                    maxLength = len[i];
+                    lastIndex = i;
+                }
             }
+            lis = new int[maxLength];
+            for (int i = 0; i < maxLength; i++)
+            {
+                lis[i] = sequence[lastIndex];
+                lastIndex = prev[lastIndex];
+            }
+            Array.Reverse(lis);
+            Console.WriteLine(string.Join(" ", lis));
         }
     }
 }
