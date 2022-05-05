@@ -23,30 +23,34 @@ namespace MoreExerciseP02.OldestFamilyMember
         {
             public string Name { get; set; }
             public int Age { get; set; }
-            public int OldestPerson { get; set; }
-            public Person(string name, int age, List<int> ages)
+            public int OldestPersonAge { get; set; }
+            public string OldestPersonName { get; set; }
+            public Person(string name, int age, List<int> ages, List<string> members)
             {
                 this.Name = name;
                 this.Age = age;
                 ages.Add(Age);
 
-                
-                    int oldestPerson = 0;
-                    
-                    for (int i = 0; i < ages.Count; i++)
+
+                int oldestPersonAge = 0;
+                string oldestPersonName = string.Empty;
+
+                for (int i = 0; i < ages.Count; i++)
+                {
+                    if (i == 0)
                     {
-                        if (i == 0)
-                        {
-                            oldestPerson = ages[0];
-                        }
-                        else if (ages[i] > ages[i - 1])
-                        {
-                            oldestPerson = ages[i];
-                        }
+                        oldestPersonAge = ages[0];
+                        oldestPersonName = members[0];
                     }
-                    this.OldestPerson = oldestPerson;
-                    
-                
+                    else if (ages[i] > ages[i - 1])
+                    {
+                        oldestPersonAge = ages[i];
+                        oldestPersonName = members[i];
+                    }
+                }
+                this.OldestPersonAge = oldestPersonAge;
+                this.OldestPersonName = oldestPersonName;
+
 
 
             }
@@ -57,6 +61,8 @@ namespace MoreExerciseP02.OldestFamilyMember
 
             List<string> members = new List<string>();
             List<int> ages = new List<int>();
+            string oldestPersonName = string.Empty;
+            int oldestPersonAge = 0;
             for (int i = 0; i < num; i++)
             {
                 List<string> member = Console.ReadLine()
@@ -67,9 +73,12 @@ namespace MoreExerciseP02.OldestFamilyMember
 
 
                 Family newMember = new Family(memberName, members);
-                Person oldestPerson = new Person(memberName, memberAge, ages);
+                Person oldestPerson = new Person(memberName, memberAge, ages, members);
 
+                oldestPersonName = oldestPerson.OldestPersonName;
+                oldestPersonAge = oldestPerson.OldestPersonAge;
             }
+            Console.WriteLine($"{oldestPersonName} {oldestPersonAge}");
         }
     }
 }
