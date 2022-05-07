@@ -19,16 +19,16 @@ namespace MoreExerciseP03.SpeedRacing
                 this.FuelConsumptionPerKilometer = fuelConsumptionPerKilometer;
                 this.TraveledDistance = traveledDistance;
             }
-            public void MoveThatDistance(List<Car> cars, string carModel, int amountOfKm, Car car)
+            public void MoveThatDistance(List<Car> cars, string carModel, int amountOfKm)
             {
-                if (car.Model == carModel)
+                if (this.Model == carModel)
                 {
 
-                    double fuelAmont = car.FuelAmount - amountOfKm * car.FuelConsumptionPerKilometer;
-                    if (fuelAmont > 0)
+                    double neededFuel = amountOfKm * this.FuelConsumptionPerKilometer;
+                    if (this.FuelAmount >= neededFuel)
                     {
-                        car.TraveledDistance += amountOfKm;
-                        car.FuelAmount = fuelAmont;
+                        this.TraveledDistance += amountOfKm;
+                        this.FuelAmount -= neededFuel;
 
                     }
                     else
@@ -73,7 +73,7 @@ namespace MoreExerciseP03.SpeedRacing
 
                 foreach (var car in cars)
                 {
-                    car.MoveThatDistance(cars, carModel, amountOfKm, car);
+                    car.MoveThatDistance(cars, carModel, amountOfKm);
                 }
 
                 command = Console.ReadLine();
