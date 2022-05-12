@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,17 +12,19 @@ namespace MoreExerciseP05.ShoppingSpree
             {
                 this.Name = name;
                 this.Money = money;
-                
-                
+
+
+            }
+            public List<string> TotalBagOfProducts(List<string> bagOfProducts)
+            {
+                this.BagOfProducts = bagOfProducts;
+                return bagOfProducts;
             }
             public string Name { get; set; }
             public int Money { get; set; }
-            public List<Product> BagOfProducts { get; set; }
+            public List<string> BagOfProducts { get; set; }
 
-            public void AffordableOrNot(List<Product> bagOfProducts)
-            {
 
-            }
         }
         class Product
         {
@@ -31,6 +33,7 @@ namespace MoreExerciseP05.ShoppingSpree
                 this.Name = name;
                 this.Cost = cost;
             }
+
             public string Name { get; set; }
             public int Cost { get; set; }
         }
@@ -38,9 +41,10 @@ namespace MoreExerciseP05.ShoppingSpree
         {
             List<Person> people = new List<Person>();
             List<Product> products = new List<Product>();
+            List<string> bagOfProducts = new List<string>();
 
             string[] peopleInput = Console.ReadLine()
-              .Split(new[] {';'}, StringSplitOptions.RemoveEmptyEntries)
+              .Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
               .ToArray();
 
             string[] productsInput = Console.ReadLine()
@@ -69,6 +73,48 @@ namespace MoreExerciseP05.ShoppingSpree
 
                 Product product = new Product(name, cost);
                 products.Add(product);
+            }
+
+            string cmd = Console.ReadLine();
+            while (cmd != "END")
+            {
+                string[] productToPurchase = cmd
+                    .Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                    .ToArray();
+
+                string personName = productToPurchase[0];
+                string productName = productToPurchase[1];
+
+                foreach (var product in products)
+                {
+                    if (product.Name == productName)
+                    {
+                        foreach (var person in people)
+                        {
+                            if (person.Name == personName)
+                            {
+                                if (person.Money - product.Cost <= person.Money)
+                                {
+                                    person.Money -= product.Cost;
+                                    person.BagOfProducts.Add(productName);
+                                    Console.WriteLine($"{personName} bought {productName}");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.WriteLine($"{personName} can't afford {productName}");
+                                    break;
+                                }
+                            }
+                        }
+                        break;
+                    }
+                }
+                cmd = Console.ReadLine();
+            }
+            foreach (var person in people)
+            {
+                Console.WriteLine($"{person.Name} - {string.Join(", ", person.BagOfProducts)}");
             }
         }
     }
