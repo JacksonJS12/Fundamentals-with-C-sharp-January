@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -96,7 +96,7 @@ namespace MoreExerciseP05.ShoppingSpree
                                 if (person.Money - product.Cost <= person.Money)
                                 {
                                     person.Money -= product.Cost;
-                                    person.BagOfProducts.Add(productName);
+                                    person.TotalBagOfProducts(bagOfProducts).Add(productName);
                                     Console.WriteLine($"{personName} bought {productName}");
                                     break;
                                 }
@@ -114,7 +114,7 @@ namespace MoreExerciseP05.ShoppingSpree
             }
             foreach (var person in people)
             {
-                Console.WriteLine($"{person.Name} - {string.Join(", ", person.BagOfProducts)}");
+                Console.WriteLine($"{person.Name} - {string.Join(", ", person.TotalBagOfProducts(bagOfProducts))}");
             }
         }
     }
