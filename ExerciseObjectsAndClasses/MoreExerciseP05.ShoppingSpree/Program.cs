@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,17 +8,28 @@ namespace MoreExerciseP05.ShoppingSpree
     {
         class Person
         {
-            public Person(string name, int money)
+            public Person(string name, int money, List<string> bagOfProducts)
             {
                 this.Name = name;
                 this.Money = money;
-
+                this.BagOfProducts = bagOfProducts;
 
             }
-            public List<string> TotalBagOfProducts(List<string> bagOfProducts)
+            public void CanPurchese(string personName, string productName)
             {
-                this.BagOfProducts = bagOfProducts;
-                return bagOfProducts;
+            
+                if (this.Money - Cost< this.Money)
+                {
+                    this.Money -= Product.Cost;
+                    this.BagOfProducts.Add(productName);
+                    Console.WriteLine($"{personName} bought {productName}");
+                    
+                }
+                else
+                {
+                    Console.WriteLine($"{personName} can't afford {productName}");
+                    
+                }
             }
             public string Name { get; set; }
             public int Money { get; set; }
@@ -58,8 +69,8 @@ namespace MoreExerciseP05.ShoppingSpree
                     .ToArray();
                 string name = personInput[0];
                 int money = int.Parse(personInput[1]);
-
-                Person person = new Person(name, money);
+               
+                Person person = new Person(name, money, bagOfProducts);
                 people.Add(person);
             }
 
@@ -84,27 +95,16 @@ namespace MoreExerciseP05.ShoppingSpree
 
                 string personName = productToPurchase[0];
                 string productName = productToPurchase[1];
-
-                foreach (var product in products)
+                foreach (var person in people)
                 {
-                    if (product.Name == productName)
+                    if (person.Name == personName)
                     {
-                        foreach (var person in people)
+                        foreach (var product in products)
                         {
-                            if (person.Name == personName)
+                            if (product.Name == productName)
                             {
-                                if (person.Money - product.Cost <= person.Money)
-                                {
-                                    person.Money -= product.Cost;
-                                    person.TotalBagOfProducts(bagOfProducts).Add(productName);
-                                    Console.WriteLine($"{personName} bought {productName}");
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.WriteLine($"{personName} can't afford {productName}");
-                                    break;
-                                }
+
+                                
                             }
                         }
                         break;
@@ -114,7 +114,7 @@ namespace MoreExerciseP05.ShoppingSpree
             }
             foreach (var person in people)
             {
-                Console.WriteLine($"{person.Name} - {string.Join(", ", person.TotalBagOfProducts(bagOfProducts))}");
+                Console.WriteLine($"{person.Name} - {string.Join(", ", person.BagOfProducts)}");
             }
         }
     }
