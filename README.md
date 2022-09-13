@@ -1,4 +1,4 @@
-# Fundamentals-with-C-sharp-January-solutions
+# Fundamentals with C# January solutions
 Fundamentals with C# January-April 2022
 
 [Software University course](https://softuni.bg/trainings/3606/programming-fundamentals-with-csharp-january-2022) - Exercises and Solutions
